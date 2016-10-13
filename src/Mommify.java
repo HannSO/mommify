@@ -24,6 +24,7 @@ public class Mommify {
                         consecutive = true;
                         continue;
                     }
+                } else {
                     consecutive = false;
                 }
             }
@@ -32,10 +33,7 @@ public class Mommify {
     }
 
     private boolean isAVowel(char letter) {
-        if ("aieou".contains(String.valueOf(letter))) {
-            return true;
-        }
-        return false;
+        return ("aieou".contains(String.valueOf(letter)));
     }
 
     private boolean areVowelsOverThirtyPercent(String input) {
