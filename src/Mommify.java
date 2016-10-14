@@ -11,33 +11,22 @@ public class Mommify {
 
 
     public String transform(String input) {
-        Boolean consecutive = false;
-        StringBuffer inputAsBuffer = new StringBuffer(input);
-        if (areVowelsOverThirtyPercent(input)) {
-            for (int i = 0; i < inputAsBuffer.length(); i++) {
-                char character = inputAsBuffer.charAt(i);
-                if (isAVowel(character)) {
-                    inputAsBuffer.deleteCharAt(i);
-                    if(!consecutive) {
-                        inputAsBuffer.insert(i, MOMMY);
-                        i = i + MOMMY.length() - 1;
-                        consecutive = true;
-                        continue;
-                    }
-                } else {
-                    consecutive = false;
-                }
-            }
-        }
-        return inputAsBuffer.toString();
+       if (VowelsAreOverThirtyPercent(input)){
+           for(char c : input.toCharArray()) {
+               {
+                   input = input.replace(""+c, MOMMY);
+               }
+           }
+       }
+       return input;
     }
+
 
     private boolean isAVowel(char letter) {
         return ("aieou".contains(String.valueOf(letter)));
     }
 
-    private boolean areVowelsOverThirtyPercent(String input) {
-//        StringBuffer inputAsBuffer= new StringBuffer(input);
+    private boolean VowelsAreOverThirtyPercent(String input) {
         List<String> allVowels = new ArrayList();
         for (int i = 0; i < input.length(); i++) {
             char character = input.charAt(i);
