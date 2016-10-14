@@ -12,17 +12,23 @@ public class Mommify {
     public String transform(String input) {
        if (VowelsAreOverThirtyPercent(input)){
            for(char c : input.toCharArray()) {
-               if (!isAVowel(c)){transformedString = transformedString.concat(String.valueOf(c));}
-               System.out.print(transformedString.endsWith(MOMMY));
-               if  (!(transformedString.endsWith(MOMMY))&& isAVowel(c)) {
-                   transformedString = transformedString.concat(MOMMY);
-               }
+               addToTransformedStringIfVowel(c);
+               mommifyTransformedStringIfPrevVowelNotPresent(c);
            }
            return transformedString;
        }
        return input;
     }
 
+    private void addToTransformedStringIfVowel(char c){
+        if (!isAVowel(c)){transformedString = transformedString.concat(String.valueOf(c));}
+    }
+
+    private void mommifyTransformedStringIfPrevVowelNotPresent(char c){
+        if  (!(transformedString.endsWith(MOMMY))&& isAVowel(c)) {
+            transformedString = transformedString.concat(MOMMY);
+        }
+    }
     private boolean isAVowel(char c) {
         return ("aieou".contains(String.valueOf(c)));
     }
